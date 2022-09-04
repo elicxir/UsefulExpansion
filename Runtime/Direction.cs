@@ -45,7 +45,7 @@ namespace Expansion
             return res;
         }
 
-        public static Vector2 GetVector(Direction4 direction)
+        public static Vector2 GetVector2(Direction4 direction)
         {
             switch (direction)
             {
@@ -65,7 +65,28 @@ namespace Expansion
             }
         }
 
-        public static Vector2 GetVector(Direction8 direction, bool normalize = true)
+        public static Vector3 GetVector3(Direction4 direction)
+        {
+            switch (direction)
+            {
+                case Direction4.UP:
+                    return Vector3.up;
+
+                case Direction4.DOWN:
+                    return Vector3.down;
+
+                case Direction4.RIGHT:
+                    return Vector3.right;
+
+                case Direction4.LEFT:
+                    return Vector3.left;
+                default:
+                    return Vector3.zero;
+            }
+
+        }
+
+        public static Vector2 GetVector2(Direction8 direction, bool normalize = true)
         {
             Vector2 vector;
             switch (direction)
@@ -116,7 +137,52 @@ namespace Expansion
             }
         }
 
-        public static Vector2Int GetVectorInt(Direction4 direction)
+
+        public static Vector3Int GetVector3Int(Direction8 direction)
+        {
+            switch (direction)
+            {
+                case Direction8.UP:
+                    return Vector3Int.up;
+                    break;
+                case Direction8.LeftUp:
+                    return Vector3Int.left + Vector3Int.up;
+
+                    break;
+                case Direction8.LEFT:
+                    return Vector3Int.left;
+
+                    break;
+                case Direction8.LeftDown:
+                    return Vector3Int.left + Vector3Int.down;
+
+                    break;
+                case Direction8.DOWN:
+                    return Vector3Int.down;
+
+                    break;
+                case Direction8.RightDown:
+                    return Vector3Int.right + Vector3Int.down;
+
+                    break;
+                case Direction8.RIGHT:
+                    return Vector3Int.right;
+
+                    break;
+                case Direction8.RightUp:
+                    return Vector3Int.right + Vector3Int.up;
+
+                    break;
+                default:
+                    return Vector3Int.zero;
+                    break;
+            }
+        }
+
+
+
+
+        public static Vector2Int GetVector2Int(Direction4 direction)
         {
             switch (direction)
             {
