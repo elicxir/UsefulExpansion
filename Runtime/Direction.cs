@@ -30,7 +30,7 @@ namespace Expansion
         public static int Angle(Direction4 dir1, Direction4 dir2)
         {
             var d1 = (int)dir1 * 2;
-            var d2 = (int)dir2*2;
+            var d2 = (int)dir2 * 2;
             return Angle((Direction8)d1, (Direction8)d2);
         }
         /// <summary>
@@ -43,6 +43,97 @@ namespace Expansion
             int res = Mathf.Min(Mathf.Abs(d1 - d2), Mathf.Abs(d1 - d2 + 8), Mathf.Abs(d1 - d2 - 8));
 
             return res;
+        }
+
+        public static Vector2 GetVector(Direction4 direction)
+        {
+            switch (direction)
+            {
+                case Direction4.UP:
+                    return Vector2.up;
+
+                case Direction4.DOWN:
+                    return Vector2.down;
+
+                case Direction4.RIGHT:
+                    return Vector2.right;
+
+                case Direction4.LEFT:
+                    return Vector2.left;
+                default:
+                    return Vector2.zero;
+            }
+        }
+
+        public static Vector2 GetVector(Direction8 direction, bool normalize = true)
+        {
+            Vector2 vector;
+            switch (direction)
+            {
+                case Direction8.UP:
+                    vector = Vector2.up;
+                    break;
+                case Direction8.LeftUp:
+                    vector = Vector2.left+Vector2.up;
+
+                    break;
+                case Direction8.LEFT:
+                    vector = Vector2.left;
+
+                    break;
+                case Direction8.LeftDown:
+                    vector = Vector2.left+Vector2.down;
+
+                    break;
+                case Direction8.DOWN:
+                    vector = Vector2.down;
+
+                    break;
+                case Direction8.RightDown:
+                    vector = Vector2.right+Vector2.down;
+
+                    break;
+                case Direction8.RIGHT:
+                    vector = Vector2.right;
+
+                    break;
+                case Direction8.RightUp:
+                    vector = Vector2.right+Vector2.up;
+
+                    break;
+                default:
+                    vector = Vector2.zero;
+                    break;
+            }
+
+            if (normalize)
+            {
+                return vector / vector.magnitude;
+            }
+            else
+            {
+                return vector;
+            }
+        }
+
+        public static Vector2Int GetVectorInt(Direction4 direction)
+        {
+            switch (direction)
+            {
+                case Direction4.UP:
+                    return Vector2Int.up;
+
+                case Direction4.DOWN:
+                    return Vector2Int.down;
+
+                case Direction4.RIGHT:
+                    return Vector2Int.right;
+
+                case Direction4.LEFT:
+                    return Vector2Int.left;
+                default:
+                    return Vector2Int.zero;
+            }
         }
 
     }
